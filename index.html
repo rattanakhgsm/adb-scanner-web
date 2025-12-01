@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guardian Andoid Virus Killer Pro - Official Download</title>
+    <title>Guardian Android Virus Killer Pro - Official Download</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -17,6 +17,16 @@
         .neon-text {
             text-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3);
         }
+        /* Dropdown styling */
+        select {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 1px solid #4ade80;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        select:focus { outline: none; }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
@@ -27,14 +37,20 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <span class="text-2xl mr-2">🛡️</span>
-                    <span class="font-bold text-xl tracking-wider">Guardian Android Virus Killer <span class="text-green-400">Pro</span></span>
+                    <span class="font-bold text-xl tracking-wider">Guardian Virus Killer <span class="text-green-400">Pro</span></span>
                 </div>
-                <div class="hidden md:block">
+                <div class="hidden md:flex items-center space-x-4">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#features" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition">ฟีเจอร์</a>
-                        <a href="#download" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition">ดาวน์โหลด</a>
-                        <a href="#changelog" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition">อัปเดตล่าสุด</a>
+                        <a href="#features" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_features">ฟีเจอร์</a>
+                        <a href="#download" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_download">ดาวน์โหลด</a>
+                        <a href="#changelog" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_update">อัปเดตล่าสุด</a>
                     </div>
+                    <!-- Language Selector -->
+                    <select id="langSelector" onchange="changeLanguage(this.value)" class="text-sm">
+                        <option value="th">🇹🇭 ไทย</option>
+                        <option value="en">🇬🇧 English</option>
+                        <option value="km">🇰🇭 Khmer</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -44,20 +60,20 @@
     <div class="relative pt-32 pb-12 sm:pt-40 sm:pb-16 lg:pb-24 overflow-hidden">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
             <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl neon-text mb-6">
-                เครื่องมือจัดการ Android <br class="hidden sm:block" />
-                <span class="text-green-400">ระดับ Administrator</span>
+                <span data-i18n="hero_title1">เครื่องมือจัดการ Android</span> <br class="hidden sm:block" />
+                <span class="text-green-400" data-i18n="hero_title2">ระดับ Administrator</span>
             </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400">
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400" data-i18n="hero_desc">
                 สแกนไวรัส, ลบแอปขยะ, ตรวจสอบสุขภาพแบตเตอรี่ และจัดการไฟล์ผ่าน ADB แบบไร้สาย ครบจบในโปรแกรมเดียว
             </p>
-            <div class="mt-10 flex justify-center gap-4">
+            <div class="mt-10 flex justify-center gap-4 flex-wrap">
                 <!-- ปุ่มดาวน์โหลดหลัก -->
                 <a href="https://github.com/your-username/your-repo/releases/latest/download/AdbScannerPro.zip" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-400 hover:bg-green-500 md:py-4 md:text-lg md:px-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] transition duration-300 transform hover:scale-105">
-                    📥 ดาวน์โหลดเลย (v1.0.1)
+                    <span data-i18n="btn_download">📥 ดาวน์โหลดเลย</span> (v1.0.1)
                 </a>
                 <!-- ปุ่ม GitHub -->
                 <a href="https://github.com/your-username/your-repo" target="_blank" class="px-8 py-3 border border-gray-600 text-base font-medium rounded-md text-gray-300 hover:bg-gray-800 md:py-4 md:text-lg md:px-10 transition duration-300">
-                    ดู Source Code
+                    <span data-i18n="btn_source">ดู Source Code</span>
                 </a>
             </div>
             
@@ -84,8 +100,8 @@
     <div id="features" class="py-12 bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-base text-green-400 font-semibold tracking-wide uppercase">Features</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+                <h2 class="text-base text-green-400 font-semibold tracking-wide uppercase" data-i18n="sec_features">Features</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl" data-i18n="sec_features_sub">
                     ทำอะไรได้บ้าง?
                 </p>
             </div>
@@ -95,38 +111,38 @@
                     <!-- Feature 1 -->
                     <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
                         <div class="text-4xl mb-4">🕵️</div>
-                        <h3 class="text-lg leading-6 font-medium text-white">Adware & Fake App Detector</h3>
-                        <p class="mt-2 text-gray-400">สแกนหาแอปปลอม แอบแฝงโฆษณา หรือแอปอันตรายที่แอบติดตั้งในเครื่อง</p>
+                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_1_title">Adware & Fake App Detector</h3>
+                        <p class="mt-2 text-gray-400" data-i18n="feat_1_desc">สแกนหาแอปปลอม แอบแฝงโฆษณา หรือแอปอันตรายที่แอบติดตั้งในเครื่อง</p>
                     </div>
                     <!-- Feature 2 -->
                     <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
                         <div class="text-4xl mb-4">🏥</div>
-                        <h3 class="text-lg leading-6 font-medium text-white">Device Health Check</h3>
-                        <p class="mt-2 text-gray-400">ตรวจสอบสุขภาพแบตเตอรี่ ความร้อน และพื้นที่จัดเก็บข้อมูลแบบละเอียด</p>
+                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_2_title">Device Health Check</h3>
+                        <p class="mt-2 text-gray-400" data-i18n="feat_2_desc">ตรวจสอบสุขภาพแบตเตอรี่ ความร้อน และพื้นที่จัดเก็บข้อมูลแบบละเอียด</p>
                     </div>
                     <!-- Feature 3 -->
                     <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
                         <div class="text-4xl mb-4">🧹</div>
-                        <h3 class="text-lg leading-6 font-medium text-white">Smart Cleaner</h3>
-                        <p class="mt-2 text-gray-400">ลบไฟล์ขยะ ไฟล์ APK ที่ตกค้าง และ Log ไฟล์ เพื่อคืนพื้นที่ว่างให้มือถือ</p>
+                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_3_title">Smart Cleaner</h3>
+                        <p class="mt-2 text-gray-400" data-i18n="feat_3_desc">ลบไฟล์ขยะ ไฟล์ APK ที่ตกค้าง และ Log ไฟล์ เพื่อคืนพื้นที่ว่างให้มือถือ</p>
                     </div>
                     <!-- Feature 4 -->
                     <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
                         <div class="text-4xl mb-4">📡</div>
-                        <h3 class="text-lg leading-6 font-medium text-white">Wireless Debugging</h3>
-                        <p class="mt-2 text-gray-400">รองรับการเชื่อมต่อไร้สายสำหรับ Android 11+ พร้อมระบบจับคู่ (Pairing)</p>
+                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_4_title">Wireless Debugging</h3>
+                        <p class="mt-2 text-gray-400" data-i18n="feat_4_desc">รองรับการเชื่อมต่อไร้สายสำหรับ Android 11+ พร้อมระบบจับคู่ (Pairing)</p>
                     </div>
                     <!-- Feature 5 -->
                     <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
                         <div class="text-4xl mb-4">🛡️</div>
-                        <h3 class="text-lg leading-6 font-medium text-white">Deep Analysis</h3>
-                        <p class="mt-2 text-gray-400">วิเคราะห์สิทธิ์การเข้าถึง (Permission) เชิงลึก ว่าแอปไหนแอบใช้กล้องหรือไมค์</p>
+                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_5_title">Deep Analysis</h3>
+                        <p class="mt-2 text-gray-400" data-i18n="feat_5_desc">วิเคราะห์สิทธิ์การเข้าถึง (Permission) เชิงลึก ว่าแอปไหนแอบใช้กล้องหรือไมค์</p>
                     </div>
                     <!-- Feature 6 -->
                     <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
                         <div class="text-4xl mb-4">☁</div>
-                        <h3 class="text-lg leading-6 font-medium text-white">Auto Update</h3>
-                        <p class="mt-2 text-gray-400">ระบบอัปเดตในตัว ไม่ต้องกลัวตกยุค กดเช็คเวอร์ชันใหม่ได้ทันที</p>
+                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_6_title">Auto Update</h3>
+                        <p class="mt-2 text-gray-400" data-i18n="feat_6_desc">ระบบอัปเดตในตัว ไม่ต้องกลัวตกยุค กดเช็คเวอร์ชันใหม่ได้ทันที</p>
                     </div>
                 </div>
             </div>
@@ -137,22 +153,22 @@
     <div id="download" class="py-16 bg-gray-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass rounded-2xl p-8 md:p-12 text-center border border-green-500/30 shadow-[0_0_50px_rgba(34,197,94,0.1)]">
-                <h2 class="text-3xl font-bold text-white mb-4">พร้อมใช้งานแล้ววันนี้</h2>
-                <p class="text-gray-400 mb-8">รองรับ Windows 10 และ Windows 11 (ต้องการ .NET Framework 4.7.2 ขึ้นไป)</p>
+                <h2 class="text-3xl font-bold text-white mb-4" data-i18n="dl_title">พร้อมใช้งานแล้ววันนี้</h2>
+                <p class="text-gray-400 mb-8" data-i18n="dl_sub">รองรับ Windows 10 และ Windows 11 (ต้องการ .NET Framework 4.7.2 ขึ้นไป)</p>
                 
                 <!-- ปุ่มดาวน์โหลดรอง -->
                 <a href="https://github.com/your-username/your-repo/releases/latest/download/AdbScannerPro.zip" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-gray-900 bg-green-400 hover:bg-green-300 transition duration-300 shadow-lg">
-                    <span class="mr-2">💾</span> ดาวน์โหลดเวอร์ชันล่าสุด (ZIP)
+                    <span class="mr-2">💾</span> <span data-i18n="btn_download_zip">ดาวน์โหลดเวอร์ชันล่าสุด (ZIP)</span>
                 </a>
 
                 <div id="changelog" class="mt-12 text-left bg-black/30 rounded-lg p-6 font-mono text-sm text-gray-300 border border-gray-700">
                     <h3 class="text-green-400 font-bold mb-2">Patch Notes v1.0.1</h3>
                     <ul class="list-disc list-inside space-y-1">
-                        <li>🔥 เพิ่มฟีเจอร์ <span class="text-yellow-400">Smart Cleaner</span> ลบไฟล์ขยะ</li>
-                        <li>🏥 เพิ่มหน้าจอ <span class="text-yellow-400">Health Check</span> ดูสถานะแบตเตอรี่</li>
-                        <li>📡 ปรับปรุง UI การเชื่อมต่อไร้สายให้ใช้ง่ายขึ้น</li>
-                        <li>☁ เพิ่มปุ่มเช็คอัปเดตอัตโนมัติ</li>
-                        <li>🐞 แก้ไขบั๊กการแสดงผลภาษาไทย</li>
+                        <li>🔥 <span data-i18n="log_1">เพิ่มฟีเจอร์ Smart Cleaner ลบไฟล์ขยะ</span></li>
+                        <li>🏥 <span data-i18n="log_2">เพิ่มหน้าจอ Health Check ดูสถานะแบตเตอรี่</span></li>
+                        <li>📡 <span data-i18n="log_3">ปรับปรุง UI การเชื่อมต่อไร้สายให้ใช้ง่ายขึ้น</span></li>
+                        <li>☁ <span data-i18n="log_4">เพิ่มปุ่มเช็คอัปเดตอัตโนมัติ</span></li>
+                        <li>🐞 <span data-i18n="log_5">แก้ไขบั๊กการแสดงผลภาษาไทย</span></li>
                     </ul>
                 </div>
             </div>
@@ -162,11 +178,125 @@
     <!-- Footer -->
     <footer class="bg-gray-900 py-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-            <p>&copy; 2023-2024 Guardian Andoid Virus Killer Pro. Created with ❤️ by RATTANA.</p>
-            <p class="mt-2">Disclaimer: This tool is for educational and administrative purposes only.</p>
+            <p>&copy; 2023-2024 ADB Scanner Pro. Created with ❤️ by NFIXKHGSM.</p>
+            <p class="mt-2" data-i18n="footer_disclaimer">Disclaimer: This tool is for educational and administrative purposes only.</p>
         </div>
     </footer>
 
+    <!-- Multilingual Script -->
+    <script>
+        const translations = {
+            th: {
+                nav_features: "ฟีเจอร์",
+                nav_download: "ดาวน์โหลด",
+                nav_update: "อัปเดตล่าสุด",
+                hero_title1: "เครื่องมือจัดการ Android",
+                hero_title2: "ระดับ Administrator",
+                hero_desc: "สแกนไวรัส, ลบแอปขยะ, ตรวจสอบสุขภาพแบตเตอรี่ และจัดการไฟล์ผ่าน ADB แบบไร้สาย ครบจบในโปรแกรมเดียว",
+                btn_download: "📥 ดาวน์โหลดเลย",
+                btn_source: "ดู Source Code",
+                sec_features: "Features",
+                sec_features_sub: "ทำอะไรได้บ้าง?",
+                feat_1_title: "Adware & Fake App Detector",
+                feat_1_desc: "สแกนหาแอปปลอม แอบแฝงโฆษณา หรือแอปอันตรายที่แอบติดตั้งในเครื่อง",
+                feat_2_title: "Device Health Check",
+                feat_2_desc: "ตรวจสอบสุขภาพแบตเตอรี่ ความร้อน และพื้นที่จัดเก็บข้อมูลแบบละเอียด",
+                feat_3_title: "Smart Cleaner",
+                feat_3_desc: "ลบไฟล์ขยะ ไฟล์ APK ที่ตกค้าง และ Log ไฟล์ เพื่อคืนพื้นที่ว่างให้มือถือ",
+                feat_4_title: "Wireless Debugging",
+                feat_4_desc: "รองรับการเชื่อมต่อไร้สายสำหรับ Android 11+ พร้อมระบบจับคู่ (Pairing)",
+                feat_5_title: "Deep Analysis",
+                feat_5_desc: "วิเคราะห์สิทธิ์การเข้าถึง (Permission) เชิงลึก ว่าแอปไหนแอบใช้กล้องหรือไมค์",
+                feat_6_title: "Auto Update",
+                feat_6_desc: "ระบบอัปเดตในตัว ไม่ต้องกลัวตกยุค กดเช็คเวอร์ชันใหม่ได้ทันที",
+                dl_title: "พร้อมใช้งานแล้ววันนี้",
+                dl_sub: "รองรับ Windows 10 และ Windows 11 (ต้องการ .NET Framework 4.7.2 ขึ้นไป)",
+                btn_download_zip: "ดาวน์โหลดเวอร์ชันล่าสุด (ZIP)",
+                log_1: "เพิ่มฟีเจอร์ Smart Cleaner ลบไฟล์ขยะ",
+                log_2: "เพิ่มหน้าจอ Health Check ดูสถานะแบตเตอรี่",
+                log_3: "ปรับปรุง UI การเชื่อมต่อไร้สายให้ใช้ง่ายขึ้น",
+                log_4: "เพิ่มปุ่มเช็คอัปเดตอัตโนมัติ",
+                log_5: "แก้ไขบั๊กการแสดงผลภาษาไทย",
+                footer_disclaimer: "Disclaimer: เครื่องมือนี้สำหรับการศึกษาและการจัดการระบบเท่านั้น"
+            },
+            en: {
+                nav_features: "Features",
+                nav_download: "Download",
+                nav_update: "Changelog",
+                hero_title1: "Android Management Tool",
+                hero_title2: "Administrator Level",
+                hero_desc: "Scan viruses, clean junk, check battery health, and manage files via Wireless ADB. All in one tool.",
+                btn_download: "📥 Download Now",
+                btn_source: "View Source Code",
+                sec_features: "Features",
+                sec_features_sub: "What can it do?",
+                feat_1_title: "Adware & Fake App Detector",
+                feat_1_desc: "Scan for fake apps, hidden adware, or malicious apps secretly installed.",
+                feat_2_title: "Device Health Check",
+                feat_2_desc: "Monitor battery health, temperature, and detailed storage analysis.",
+                feat_3_title: "Smart Cleaner",
+                feat_3_desc: "Clean junk files, leftover APKs, and log files to free up space.",
+                feat_4_title: "Wireless Debugging",
+                feat_4_desc: "Support wireless connection for Android 11+ with Pairing system.",
+                feat_5_title: "Deep Analysis",
+                feat_5_desc: "Deep permission analysis. See which apps use camera or mic silently.",
+                feat_6_title: "Auto Update",
+                feat_6_desc: "Built-in updater. Never miss a version. Check updates instantly.",
+                dl_title: "Ready to use today",
+                dl_sub: "Supports Windows 10 & 11 (Requires .NET Framework 4.7.2+)",
+                btn_download_zip: "Download Latest Version (ZIP)",
+                log_1: "Added Smart Cleaner feature",
+                log_2: "Added Health Check dashboard",
+                log_3: "Improved Wireless Debugging UI",
+                log_4: "Added Auto-Update button",
+                log_5: "Fixed Thai language display bugs",
+                footer_disclaimer: "Disclaimer: This tool is for educational and administrative purposes only."
+            },
+            km: {
+                nav_features: "មុខងារ",
+                nav_download: "ទាញយក",
+                nav_update: "បច្ចុប្បន្នភាព",
+                hero_title1: "ឧបករណ៍គ្រប់គ្រង Android",
+                hero_title2: "កម្រិតអ្នកគ្រប់គ្រង",
+                hero_desc: "ស្កេនមេរោគ, លុបឯកសារឥតប្រយោជន៍, ពិនិត្យសុខភាពថ្ម និងគ្រប់គ្រងឯកសារតាម ADB Wireless ។",
+                btn_download: "📥 ទាញយកឥឡូវនេះ",
+                btn_source: "មើលកូដ",
+                sec_features: "Features",
+                sec_features_sub: "តើវាអាចធ្វើអ្វីបានខ្លះ?",
+                feat_1_title: "Adware & Fake App Detector",
+                feat_1_desc: "ស្កេនរកកម្មវិធីក្លែងក្លាយ ឬកម្មវិធីមេរោគដែលលាក់ខ្លួន។",
+                feat_2_title: "Device Health Check",
+                feat_2_desc: "ពិនិត្យសុខភាពថ្ម សីតុណ្ហភាព និងការផ្ទុកទិន្នន័យ។",
+                feat_3_title: "Smart Cleaner",
+                feat_3_desc: "លុបឯកសារឥតប្រយោជន៍ APK និង Log ដើម្បីបង្កើនទំហំផ្ទុក។",
+                feat_4_title: "Wireless Debugging",
+                feat_4_desc: "គាំទ្រការតភ្ជាប់ឥតខ្សែសម្រាប់ Android 11+ ជាមួយប្រព័ន្ធ Pairing ។",
+                feat_5_title: "Deep Analysis",
+                feat_5_desc: "វិភាគការអនុញ្ញាត (Permission) ។ មើលកម្មវិធីណាប្រើកាមេរ៉ា ឬមីក្រូហ្វូន។",
+                feat_6_title: "Auto Update",
+                feat_6_desc: "ប្រព័ន្ធអាប់ដេតស្វ័យប្រវត្តិ។ មិនបារម្ភរឿងហួសសម័យ។",
+                dl_title: "រួចរាល់សម្រាប់ការប្រើប្រាស់",
+                dl_sub: "គាំទ្រ Windows 10 និង 11 (.NET Framework 4.7.2+)",
+                btn_download_zip: "ទាញយកកំណែចុងក្រោយ (ZIP)",
+                log_1: "បន្ថែមមុខងារ Smart Cleaner",
+                log_2: "បន្ថែមផ្ទាំង Health Check",
+                log_3: "កែលម្អ UI ការតភ្ជាប់ឥតខ្សែ",
+                log_4: "បន្ថែមប៊ូតុងអាប់ដេតស្វ័យប្រវត្តិ",
+                log_5: "ជួសជុលបញ្ហាភាសាថៃ",
+                footer_disclaimer: "Disclaimer: ឧបករណ៍នេះសម្រាប់គោលបំណងអប់រំ និងគ្រប់គ្រងប៉ុណ្ណោះ។"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>
-
