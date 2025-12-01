@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guardian Android Virus Killer Pro - Official Download</title>
+    <title>Guardian Scanner Pro - Official Download</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -27,6 +27,17 @@
             cursor: pointer;
         }
         select:focus { outline: none; }
+        
+        /* Ad Placeholder Animation */
+        .ad-placeholder {
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.03),
+                rgba(255, 255, 255, 0.03) 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
@@ -37,7 +48,7 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <span class="text-2xl mr-2">🛡️</span>
-                    <span class="font-bold text-xl tracking-wider">Guardian Android Virus Killer <span class="text-green-400">Pro</span></span>
+                    <span class="font-bold text-xl tracking-wider">ADB Scanner <span class="text-green-400">Pro</span></span>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
                     <div class="ml-10 flex items-baseline space-x-4">
@@ -75,6 +86,10 @@
                 <a href="https://github.com/your-username/your-repo" target="_blank" class="px-8 py-3 border border-gray-600 text-base font-medium rounded-md text-gray-300 hover:bg-gray-800 md:py-4 md:text-lg md:px-10 transition duration-300">
                     <span data-i18n="btn_source">ดู Source Code</span>
                 </a>
+                <!-- ปุ่ม Donate -->
+                <a href="https://www.buymeacoffee.com/your-username" target="_blank" class="px-8 py-3 border border-yellow-400 text-base font-medium rounded-md text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 md:py-4 md:text-lg md:px-10 transition duration-300">
+                    <span data-i18n="btn_donate">☕ สนับสนุน</span>
+                </a>
             </div>
             
             <!-- Terminal Effect Mockup -->
@@ -94,6 +109,20 @@
         
         <!-- Background Grid -->
         <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </div>
+
+    <!-- ADVERTISEMENT BANNER 1 (Main) -->
+    <div class="py-4 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass ad-placeholder border border-gray-700 rounded-lg p-4 text-center relative overflow-hidden group hover:border-green-500 transition-colors duration-300 cursor-pointer">
+                <span class="absolute top-0 right-0 bg-gray-800 text-[10px] px-2 py-0.5 text-gray-500 rounded-bl uppercase tracking-wider">Advertisement</span>
+                <div class="flex flex-col items-center justify-center h-20 sm:h-24 text-gray-500 group-hover:text-green-400 transition">
+                    <span class="text-3xl mb-2">📢</span>
+                    <p class="font-mono text-sm sm:text-base" data-i18n="ad_space">YOUR AD HERE (Banner Space)</p>
+                </div>
+                <!-- ใส่ Code Google AdSense หรือรูปภาพตรงนี้แทน div ข้างบนได้เลย -->
+            </div>
+        </div>
     </div>
 
     <!-- Features Grid -->
@@ -175,10 +204,20 @@
         </div>
     </div>
 
+    <!-- ADVERTISEMENT BANNER 2 (Bottom) -->
+    <div class="py-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500 text-xs mb-2 uppercase tracking-wide">Sponsored Links</p>
+            <div class="glass ad-placeholder border border-gray-700 rounded p-4 inline-block w-full max-w-2xl cursor-pointer hover:border-green-500 transition">
+                 <p class="text-gray-400 font-mono text-sm" data-i18n="ad_space_sm">Support us by viewing our sponsors</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-900 py-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-            <p>&copy; 2023-2024 Guardian Android Virus Killer Pro. Created ❤️ by RATTANA.</p>
+            <p>&copy; 2023-2024 ADB Scanner Pro. Created with ❤️ by NFIXKHGSM.</p>
             <p class="mt-2" data-i18n="footer_disclaimer">Disclaimer: This tool is for educational and administrative purposes only.</p>
         </div>
     </footer>
@@ -195,6 +234,7 @@
                 hero_desc: "สแกนไวรัส, ลบแอปขยะ, ตรวจสอบสุขภาพแบตเตอรี่ และจัดการไฟล์ผ่าน ADB แบบไร้สาย ครบจบในโปรแกรมเดียว",
                 btn_download: "📥 ดาวน์โหลดเลย",
                 btn_source: "ดู Source Code",
+                btn_donate: "☕ สนับสนุน",
                 sec_features: "Features",
                 sec_features_sub: "ทำอะไรได้บ้าง?",
                 feat_1_title: "Adware & Fake App Detector",
@@ -217,7 +257,9 @@
                 log_3: "ปรับปรุง UI การเชื่อมต่อไร้สายให้ใช้ง่ายขึ้น",
                 log_4: "เพิ่มปุ่มเช็คอัปเดตอัตโนมัติ",
                 log_5: "แก้ไขบั๊กการแสดงผลภาษาไทย",
-                footer_disclaimer: "Disclaimer: เครื่องมือนี้สำหรับการศึกษาและการจัดการระบบเท่านั้น"
+                footer_disclaimer: "Disclaimer: เครื่องมือนี้สำหรับการศึกษาและการจัดการระบบเท่านั้น",
+                ad_space: "พื้นที่โฆษณา (ติดต่อเรา)",
+                ad_space_sm: "สนับสนุนเราโดยการเยี่ยมชมผู้สนับสนุน"
             },
             en: {
                 nav_features: "Features",
@@ -228,6 +270,7 @@
                 hero_desc: "Scan viruses, clean junk, check battery health, and manage files via Wireless ADB. All in one tool.",
                 btn_download: "📥 Download Now",
                 btn_source: "View Source Code",
+                btn_donate: "☕ Donate",
                 sec_features: "Features",
                 sec_features_sub: "What can it do?",
                 feat_1_title: "Adware & Fake App Detector",
@@ -250,7 +293,9 @@
                 log_3: "Improved Wireless Debugging UI",
                 log_4: "Added Auto-Update button",
                 log_5: "Fixed Thai language display bugs",
-                footer_disclaimer: "Disclaimer: This tool is for educational and administrative purposes only."
+                footer_disclaimer: "Disclaimer: This tool is for educational and administrative purposes only.",
+                ad_space: "YOUR AD HERE (Contact Us)",
+                ad_space_sm: "Support us by viewing our sponsors"
             },
             km: {
                 nav_features: "មុខងារ",
@@ -261,6 +306,7 @@
                 hero_desc: "ស្កេនមេរោគ, លុបឯកសារឥតប្រយោជន៍, ពិនិត្យសុខភាពថ្ម និងគ្រប់គ្រងឯកសារតាម ADB Wireless ។",
                 btn_download: "📥 ទាញយកឥឡូវនេះ",
                 btn_source: "មើលកូដ",
+                btn_donate: "☕ ឧបត្ថម្ភ",
                 sec_features: "Features",
                 sec_features_sub: "តើវាអាចធ្វើអ្វីបានខ្លះ?",
                 feat_1_title: "Adware & Fake App Detector",
@@ -283,7 +329,9 @@
                 log_3: "កែលម្អ UI ការតភ្ជាប់ឥតខ្សែ",
                 log_4: "បន្ថែមប៊ូតុងអាប់ដេតស្វ័យប្រវត្តិ",
                 log_5: "ជួសជុលបញ្ហាភាសាថៃ",
-                footer_disclaimer: "Disclaimer: ឧបករណ៍នេះសម្រាប់គោលបំណងអប់រំ និងគ្រប់គ្រងប៉ុណ្ណោះ។"
+                footer_disclaimer: "Disclaimer: ឧបករណ៍នេះសម្រាប់គោលបំណងអប់រំ និងគ្រប់គ្រងប៉ុណ្ណោះ។",
+                ad_space: "ដាក់ពាណិជ្ជកម្មនៅទីនេះ",
+                ad_space_sm: "គាំទ្រពួកយើងដោយមើលអ្នកឧបត្ថម្ភ"
             }
         };
 
@@ -300,4 +348,3 @@
 
 </body>
 </html>
-
