@@ -285,17 +285,20 @@
             const versionDisplay = document.getElementById('versionDisplay');
             const btnVersionText = document.getElementById('btnVersionText');
 
+            // ดึงยอดคลิกส่วนตัวที่เคยบันทึกไว้ในเครื่อง (เพื่อให้เห็นเลขขยับทันทีสำหรับคนกด)
+            let localClicks = parseInt(localStorage.getItem('local_download_clicks') || '0');
+
             try {
                 const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases`);
                 if (!response.ok) throw new Error('Network response was not ok');
                 
                 const releases = await response.json();
-                let totalDownloads = 0;
+                let githubDownloads = 0;
                 
-                // 1. Calculate Total Downloads
+                // 1. Calculate Total GitHub Downloads
                 releases.forEach(release => {
                     release.assets.forEach(asset => {
-                        totalDownloads += asset.download_count;
+                        githubDownloads += asset.download_count;
                     });
                 });
 
@@ -306,24 +309,30 @@
                     versionDisplay.innerText = `Latest: ${latestTag}`;
                     btnVersionText.innerText = `(${latestTag})`;
                     
-                    // Update Link if Asset exists
+                    // Update Link if Asset exists (สำคัญมาก: ต้องมีไฟล์ใน Release ถึงจะนับยอดได้)
                     if (releases[0].assets.length > 0) {
                         const latestUrl = releases[0].assets[0].browser_download_url;
                         mainBtn.href = latestUrl;
                         subBtn.href = latestUrl;
+                        // ถ้าลิงก์เป็น GitHub ให้เอา target blank ออกเพื่อให้โหลดในหน้าเดิมได้เนียนๆ
+                        mainBtn.removeAttribute('target');
+                        subBtn.removeAttribute('target');
                     }
                 } else {
                      versionDisplay.innerText = "v1.0.1 (Stable)";
                 }
 
-                // Fake start if 0 (Marketing)
-                if (totalDownloads === 0) totalDownloads = 125; 
+                // Fake start for marketing if 0 (เอาออกได้ถ้าไม่ชอบ)
+                if (githubDownloads === 0 && localClicks === 0) githubDownloads = 125; 
 
-                currentDownloadCount = totalDownloads;
-                animateValue(countElement, 0, totalDownloads, 1500);
+                // รวมยอดจริงจาก GitHub + ยอดที่เพิ่งกดไปในเครื่องนี้
+                currentDownloadCount = githubDownloads + localClicks;
+                
+                animateValue(countElement, 0, currentDownloadCount, 1500);
+
             } catch (error) {
                 console.error("Error fetching data:", error);
-                countElement.innerText = "100+"; 
+                countElement.innerText = (125 + localClicks).toLocaleString(); // Fallback + local
                 versionDisplay.innerText = "v1.0.1";
             }
         }
@@ -336,17 +345,28 @@
                 obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
                 if (progress < 1) {
                     window.requestAnimationFrame(step);
+                } else {
+                     obj.innerHTML = end.toLocaleString(); // Ensure final value is precise
                 }
             };
             window.requestAnimationFrame(step);
         }
 
-        // Increment count visually on click
-        document.getElementById('mainDownloadBtn').addEventListener('click', () => {
+        // Increment count visually on click AND Save to LocalStorage
+        function recordClick() {
             const countElement = document.getElementById('downloadCountValue');
+            
+            // 1. เพิ่มยอดในตัวแปร
             currentDownloadCount++;
             countElement.innerHTML = currentDownloadCount.toLocaleString();
-        });
+
+            // 2. บันทึกลง LocalStorage (เพื่อให้รีเฟรชแล้วยอดที่กดไปไม่หาย)
+            let currentLocal = parseInt(localStorage.getItem('local_download_clicks') || '0');
+            localStorage.setItem('local_download_clicks', (currentLocal + 1).toString());
+        }
+
+        document.getElementById('mainDownloadBtn').addEventListener('click', recordClick);
+        document.getElementById('subDownloadBtn').addEventListener('click', recordClick);
 
 
         // Modal Logic
