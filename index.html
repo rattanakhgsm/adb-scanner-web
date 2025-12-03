@@ -101,7 +101,7 @@
                     </div>
                     <!-- Language Selector -->
                     <select id="langSelector" onchange="changeLanguage(this.value)" class="text-sm">
-                        <option value="en">EN English</option>
+                        <option value="en" selected>EN English</option>
                         <option value="km">🇰🇭 Khmer</option>
                         <option value="th">🇹🇭 ไทย</option>
                     </select>
@@ -125,29 +125,42 @@
                 <a href="https://drive.google.com/file/d/1wIi_DtGvcOPuxObXTqfCgSzSF21VwkU7/view?usp=sharing" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-400 hover:bg-green-500 md:py-4 md:text-lg md:px-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] transition duration-300 transform hover:scale-105">
                     <span data-i18n="btn_download">📥 ดาวน์โหลดเลย</span> (v1.0.1)
                 </a>
-                <!-- ปุ่ม GitHub -->
-            <!--<a href="https://github.com/your-username/your-repo" target="_blank" class="px-8 py-3 border border-gray-600 text-base font-medium rounded-md text-gray-300 hover:bg-gray-800 md:py-4 md:text-lg md:px-10 transition duration-300">
-                    <span data-i18n="btn_source">ดู Source Code</span>
-                </a>
                 <!-- ปุ่ม Donate (แก้ไขเป็นปุ่มกดเปิด Modal) -->
                 <button onclick="openDonateModal()" class="px-8 py-3 border border-yellow-400 text-base font-medium rounded-md text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 md:py-4 md:text-lg md:px-10 transition duration-300">
                     <span data-i18n="btn_donate">☕ สนับสนุน</span>
                 </button>
             </div>
             
-            <!-- Terminal Effect Mockup -->
-            <div class="mt-12 max-w-3xl mx-auto glass rounded-lg p-4 text-left font-mono text-sm shadow-2xl border-t-4 border-green-500">
-                <div class="flex gap-2 mb-4">
-                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <!-- App Screenshot Showcase (Replace Terminal) -->
+            <div class="mt-16 relative max-w-5xl mx-auto transform transition hover:scale-[1.01] duration-500">
+                <!-- Glow Effect Background -->
+                <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl blur opacity-30 animate-pulse"></div>
+                
+                <div class="relative rounded-xl border border-gray-700 bg-gray-900/90 shadow-2xl overflow-hidden backdrop-blur-sm">
+                    <!-- Mockup Window Header -->
+                    <div class="bg-gray-800 px-4 py-3 flex items-center space-x-2 border-b border-gray-700">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="flex-1 text-center text-xs text-gray-400 font-mono">Guardian Android Virus Killer Pro.exe</div>
+                    </div>
+                    
+                    <!-- Screenshot Image -->
+                    <!-- *** IMPORTANT: Upload your screenshot file and name it 'app-preview.png' *** -->
+                    <img src="app-preview.png" alt="Guardian App Interface" class="w-full h-auto object-cover opacity-95 hover:opacity-100 transition duration-500">
+                    
+                    <!-- Overlay for missing image fallback (Optional) -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-gray-900/50 -z-10">
+                        <p class="text-gray-500">Loading Preview...</p>
+                    </div>
                 </div>
-                <div class="text-green-400">$ adb connect 192.168.1.5:5555</div>
-                <div class="text-white">connected to 192.168.1.5:5555</div>
-                <div class="text-green-400 mt-2">$ adb shell dumpsys battery</div>
-                <div class="text-gray-300">level: 100<br>health: 2 (Good)<br>status: 5 (Full)</div>
-                <div class="text-green-400 mt-2 animate-pulse">$ _</div>
+                
+                <!-- Reflection effect -->
+                <div class="absolute -bottom-20 left-0 right-0 h-20 bg-gradient-to-t from-transparent to-gray-900/20 blur-xl transform scale-y-[-1] opacity-50 pointer-events-none"></div>
             </div>
+
         </div>
         
         <!-- Background Grid -->
@@ -332,7 +345,7 @@
                 log_4: "Added Auto-Update button",
                 log_5: "Fixed Thai language display bugs",
                 footer_disclaimer: "Disclaimer: This tool is for educational and administrative purposes only.",
-                ad_space: "YOUR AD HERE (Contact Us)",
+                ad_space: "YOUR AD HERE (Banner Space)",
                 ad_space_sm: "Support us by viewing our sponsors",
                 modal_donate_title: "Support Developer",
                 modal_donate_desc: "Scan with Mobile Banking App",
@@ -427,16 +440,21 @@
                 }
             });
         }
+
+        // --- ตั้งค่าภาษาเริ่มต้นเป็นภาษาอังกฤษ ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultLang = 'en'; // กำหนดเป็น 'en' เพื่อให้เริ่มต้นเป็นภาษาอังกฤษ
+            
+            // ตั้งค่าใน Dropdown ให้ตรงกัน
+            const selector = document.getElementById('langSelector');
+            if(selector) {
+                selector.value = defaultLang;
+            }
+            
+            // เรียกฟังก์ชันเปลี่ยนภาษาทันที
+            changeLanguage(defaultLang);
+        });
     </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
