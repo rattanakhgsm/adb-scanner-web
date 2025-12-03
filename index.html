@@ -17,7 +17,6 @@
         .neon-text {
             text-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3);
         }
-        /* Dropdown styling */
         select {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
@@ -28,7 +27,6 @@
         }
         select:focus { outline: none; }
         
-        /* Ad Placeholder Animation */
         .ad-placeholder {
             background-image: repeating-linear-gradient(
                 45deg,
@@ -42,11 +40,9 @@
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
 
-    <!-- Donate Modal (Hidden by default) -->
+    <!-- Donate Modal -->
     <div id="donateModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-        <!-- Expanded width to accommodate 2 QRs -->
         <div class="glass p-6 rounded-2xl max-w-2xl w-full mx-4 text-center border border-green-500/50 transform scale-95 transition-transform duration-300 relative shadow-[0_0_50px_rgba(34,197,94,0.2)]" id="donateModalContent">
-            <!-- Close Button (X) -->
             <button onclick="closeDonateModal()" class="absolute top-3 right-3 text-gray-400 hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -56,22 +52,17 @@
             <h3 class="text-2xl font-bold text-white mb-2 neon-text" data-i18n="modal_donate_title">สนับสนุนผู้พัฒนา</h3>
             <p class="text-sm text-gray-400 mb-6" data-i18n="modal_donate_desc">Scan with Mobile Banking App</p>
             
-            <!-- QR Codes Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <!-- ABA Bank -->
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-2 rounded-xl mb-3 shadow-lg w-48 h-auto hover:scale-105 transition duration-300">
-                        <!-- IMPORTANT: Make sure 'ABA QR.jpg' is in the same folder -->
                         <img src="ABA QR.jpg" alt="ABA QR Code" class="w-full h-full object-contain rounded-lg">
                     </div>
                     <div class="text-white font-mono text-sm font-bold tracking-wide">CHHUON RATTANA</div>
                     <div class="text-cyan-400 text-xs mt-1 font-bold">ABA Bank</div>
                 </div>
 
-                <!-- K Bank -->
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-2 rounded-xl mb-3 shadow-lg w-48 h-auto hover:scale-105 transition duration-300">
-                        <!-- IMPORTANT: Make sure 'K BANK.jpg' is in the same folder -->
                         <img src="K BANK.jpg" alt="K Bank QR Code" class="w-full h-full object-contain rounded-lg">
                     </div>
                     <div class="text-white font-mono text-sm font-bold tracking-wide">MR. RATTANA CHHUON</div>
@@ -99,7 +90,6 @@
                         <a href="#download" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_download">ดาวน์โหลด</a>
                         <a href="#changelog" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_update">อัปเดตล่าสุด</a>
                     </div>
-                    <!-- Language Selector -->
                     <select id="langSelector" onchange="changeLanguage(this.value)" class="text-sm">
                         <option value="en" selected>EN English</option>
                         <option value="km">🇰🇭 Khmer</option>
@@ -113,6 +103,12 @@
     <!-- Hero Section -->
     <div class="relative pt-32 pb-12 sm:pt-40 sm:pb-16 lg:pb-24 overflow-hidden">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <!-- Version Badge (Dynamic) -->
+            <div class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-6 text-sm rounded-full bg-slate-800 text-white border border-slate-600" role="alert">
+                <span class="text-xs bg-green-600 rounded-full text-white px-3 py-1 mr-3">New</span> 
+                <span id="versionDisplay" class="text-sm font-medium">Checking version...</span> 
+            </div>
+
             <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl neon-text mb-6">
                 <span data-i18n="hero_title1">เครื่องมือจัดการ Android</span> <br class="hidden sm:block" />
                 <span class="text-green-400" data-i18n="hero_title2">ระดับ Administrator</span>
@@ -122,9 +118,9 @@
             </p>
             <div class="mt-10 flex flex-col justify-center items-center gap-4">
                 <div class="flex flex-wrap justify-center gap-4">
-                    <!-- ปุ่มดาวน์โหลดหลัก -->
-                    <a id="mainDownloadBtn" href="https://drive.google.com/file/d/1wIi_DtGvcOPuxObXTqfCgSzSF21VwkU7/view?usp=sharing" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-400 hover:bg-green-500 md:py-4 md:text-lg md:px-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] transition duration-300 transform hover:scale-105">
-                        <span data-i18n="btn_download">📥 ดาวน์โหลดเลย</span> (v1.0.1)
+                    <!-- ปุ่มดาวน์โหลดหลัก (เริ่มด้วย Link Google Drive ก่อน แล้ว Script จะเปลี่ยนเป็น GitHub ถ้าโหลดได้) -->
+                    <a id="mainDownloadBtn" href="https://drive.google.com/uc?export=download&id=1wIi_DtGvcOPuxObXTqfCgSzSF21VwkU7" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-400 hover:bg-green-500 md:py-4 md:text-lg md:px-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] transition duration-300 transform hover:scale-105">
+                        <span data-i18n="btn_download">📥 ดาวน์โหลดเลย</span> <span id="btnVersionText">(v1.0.1)</span>
                     </a>
                     <!-- ปุ่ม Donate -->
                     <button onclick="openDonateModal()" class="px-8 py-3 border border-yellow-400 text-base font-medium rounded-md text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 md:py-4 md:text-lg md:px-10 transition duration-300">
@@ -142,13 +138,10 @@
                 </p>
             </div>
             
-            <!-- App Screenshot Showcase (Replace Terminal) -->
+            <!-- App Screenshot Showcase -->
             <div class="mt-16 relative max-w-5xl mx-auto transform transition hover:scale-[1.01] duration-500">
-                <!-- Glow Effect Background -->
                 <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl blur opacity-30 animate-pulse"></div>
-                
                 <div class="relative rounded-xl border border-gray-700 bg-gray-900/90 shadow-2xl overflow-hidden backdrop-blur-sm">
-                    <!-- Mockup Window Header -->
                     <div class="bg-gray-800 px-4 py-3 flex items-center space-x-2 border-b border-gray-700">
                         <div class="flex space-x-2">
                             <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -157,27 +150,18 @@
                         </div>
                         <div class="flex-1 text-center text-xs text-gray-400 font-mono">Guardian Android Virus Killer Pro.exe</div>
                     </div>
-                    
-                    <!-- Screenshot Image -->
                     <img src="app-preview.png" alt="Guardian App Interface" class="w-full h-auto object-cover opacity-95 hover:opacity-100 transition duration-500">
-                    
-                    <!-- Overlay for missing image fallback (Optional) -->
                     <div class="absolute inset-0 flex items-center justify-center bg-gray-900/50 -z-10">
                         <p class="text-gray-500">Loading Preview...</p>
                     </div>
                 </div>
-                
-                <!-- Reflection effect -->
                 <div class="absolute -bottom-20 left-0 right-0 h-20 bg-gradient-to-t from-transparent to-gray-900/20 blur-xl transform scale-y-[-1] opacity-50 pointer-events-none"></div>
             </div>
-
         </div>
-        
-        <!-- Background Grid -->
         <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
     </div>
 
-    <!-- ADVERTISEMENT BANNER 1 (Main) -->
+    <!-- ADVERTISEMENT BANNER 1 -->
     <div class="py-4 bg-gray-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass ad-placeholder border border-gray-700 rounded-lg p-4 text-center relative overflow-hidden group hover:border-green-500 transition-colors duration-300 cursor-pointer">
@@ -250,8 +234,8 @@
                 <h2 class="text-3xl font-bold text-white mb-4" data-i18n="dl_title">พร้อมใช้งานแล้ววันนี้</h2>
                 <p class="text-gray-400 mb-8" data-i18n="dl_sub">รองรับ Windows 10 และ Windows 11 (ต้องการ .NET Framework 4.7.2 ขึ้นไป)</p>
                 
-                <!-- ปุ่มดาวน์โหลดรอง -->
-                <a href="https://drive.google.com/file/d/1wIi_DtGvcOPuxObXTqfCgSzSF21VwkU7/view?usp=sharing" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-gray-900 bg-green-400 hover:bg-green-300 transition duration-300 shadow-lg">
+                <!-- ปุ่มดาวน์โหลดรอง (ลิงก์จะถูกเปลี่ยนอัตโนมัติเช่นกัน) -->
+                <a id="subDownloadBtn" href="https://drive.google.com/uc?export=download&id=1wIi_DtGvcOPuxObXTqfCgSzSF21VwkU7" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-gray-900 bg-green-400 hover:bg-green-300 transition duration-300 shadow-lg">
                     <span class="mr-2">💾</span> <span data-i18n="btn_download_zip">ดาวน์โหลดเวอร์ชันล่าสุด (ZIP)</span>
                 </a>
 
@@ -269,7 +253,7 @@
         </div>
     </div>
 
-    <!-- ADVERTISEMENT BANNER 2 (Bottom) -->
+    <!-- ADVERTISEMENT BANNER 2 -->
     <div class="py-8 bg-gray-900 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-gray-500 text-xs mb-2 uppercase tracking-wide">Sponsored Links</p>
@@ -289,13 +273,18 @@
 
     <!-- Multilingual Script & Modal Logic -->
     <script>
-        // --- Download Counter Logic ---
+        // --- Download Counter & Auto Link Logic ---
         const REPO_OWNER = 'rattanakhgsm';
         const REPO_NAME = 'adb-scanner-web';
         let currentDownloadCount = 0;
 
         async function fetchDownloadCount() {
             const countElement = document.getElementById('downloadCountValue');
+            const mainBtn = document.getElementById('mainDownloadBtn');
+            const subBtn = document.getElementById('subDownloadBtn');
+            const versionDisplay = document.getElementById('versionDisplay');
+            const btnVersionText = document.getElementById('btnVersionText');
+
             try {
                 const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases`);
                 if (!response.ok) throw new Error('Network response was not ok');
@@ -303,20 +292,39 @@
                 const releases = await response.json();
                 let totalDownloads = 0;
                 
+                // 1. Calculate Total Downloads
                 releases.forEach(release => {
                     release.assets.forEach(asset => {
                         totalDownloads += asset.download_count;
                     });
                 });
 
-                // ถ้าเป็น 0 ให้ตั้งค่าเริ่มต้น (Fake start for new repo)
-                if (totalDownloads === 0) totalDownloads = 12; 
+                // 2. Find latest download link & Version
+                if (releases.length > 0) {
+                    // Update Version Badge
+                    const latestTag = releases[0].tag_name; // e.g. v1.0.2
+                    versionDisplay.innerText = `Latest: ${latestTag}`;
+                    btnVersionText.innerText = `(${latestTag})`;
+                    
+                    // Update Link if Asset exists
+                    if (releases[0].assets.length > 0) {
+                        const latestUrl = releases[0].assets[0].browser_download_url;
+                        mainBtn.href = latestUrl;
+                        subBtn.href = latestUrl;
+                    }
+                } else {
+                     versionDisplay.innerText = "v1.0.1 (Stable)";
+                }
+
+                // Fake start if 0 (Marketing)
+                if (totalDownloads === 0) totalDownloads = 125; 
 
                 currentDownloadCount = totalDownloads;
                 animateValue(countElement, 0, totalDownloads, 1500);
             } catch (error) {
-                console.error("Error fetching download count:", error);
-                countElement.innerText = "100+"; // Fallback
+                console.error("Error fetching data:", error);
+                countElement.innerText = "100+"; 
+                versionDisplay.innerText = "v1.0.1";
             }
         }
 
@@ -346,7 +354,6 @@
             const modal = document.getElementById('donateModal');
             const content = document.getElementById('donateModalContent');
             modal.classList.remove('hidden');
-            // Small timeout to allow removing 'hidden' before starting opacity transition
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
                 content.classList.remove('scale-95');
@@ -362,17 +369,15 @@
             content.classList.add('scale-95');
             setTimeout(() => {
                 modal.classList.add('hidden');
-            }, 300); // Wait for transition
+            }, 300);
         }
 
-        // Close when clicking outside
         document.getElementById('donateModal').addEventListener('click', function(e) {
             if (e.target === this) closeDonateModal();
         });
 
         // Translation Data
         const translations = {
-            
             en: {
                 nav_features: "Features",
                 nav_download: "Download",
@@ -507,18 +512,14 @@
 
         // --- ตั้งค่าภาษาเริ่มต้นเป็นภาษาอังกฤษ ---
         document.addEventListener('DOMContentLoaded', () => {
-            const defaultLang = 'en'; // กำหนดเป็น 'en' เพื่อให้เริ่มต้นเป็นภาษาอังกฤษ
+            const defaultLang = 'en'; 
             
-            // ตั้งค่าใน Dropdown ให้ตรงกัน
             const selector = document.getElementById('langSelector');
             if(selector) {
                 selector.value = defaultLang;
             }
             
-            // เรียกฟังก์ชันเปลี่ยนภาษาทันที
             changeLanguage(defaultLang);
-            
-            // Fetch download count
             fetchDownloadCount();
         });
     </script>
