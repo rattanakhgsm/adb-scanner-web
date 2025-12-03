@@ -131,8 +131,12 @@
                         <span data-i18n="btn_donate">☕ สนับสนุน</span>
                     </button>
                 </div>
+                <!-- Password Info -->
+                <p class="text-sm text-green-300 mt-1 font-mono bg-green-900/30 px-3 py-1 rounded-full border border-green-500/30 inline-block" data-i18n="zip_pass">
+                    🔑 Password: 1122
+                </p>
                 <!-- Download Counter -->
-                <p class="text-sm text-gray-400 mt-2 animate-pulse">
+                <p class="text-sm text-gray-400 mt-1 animate-pulse">
                     <span id="downloadCountText">Total Downloads:</span> 
                     <span id="downloadCountValue" class="text-green-400 font-bold font-mono">Loading...</span>
                 </p>
@@ -306,7 +310,7 @@
                 });
 
                 // ถ้าเป็น 0 ให้ตั้งค่าเริ่มต้น (Fake start for new repo)
-                if (totalDownloads === 0) totalDownloads = 9; 
+                if (totalDownloads === 0) totalDownloads = 12; 
 
                 currentDownloadCount = totalDownloads;
                 animateValue(countElement, 0, totalDownloads, 1500);
@@ -406,7 +410,8 @@
                 ad_space_sm: "Support us by viewing our sponsors",
                 modal_donate_title: "Support Developer",
                 modal_donate_desc: "Scan with Mobile Banking App",
-                btn_close: "Close"
+                btn_close: "Close",
+                zip_pass: "🔑 Password: 1122"
                 },
                 th: {
                 nav_features: "ฟีเจอร์",
@@ -445,7 +450,8 @@
                 ad_space_sm: "สนับสนุนเราโดยการเยี่ยมชมผู้สนับสนุน",
                 modal_donate_title: "สนับสนุนผู้พัฒนา",
                 modal_donate_desc: "สแกนด้วยแอปธนาคาร",
-                btn_close: "ปิดหน้าต่าง"
+                btn_close: "ปิดหน้าต่าง",
+                zip_pass: "🔑 รหัสผ่าน: 1122"
             },
             km: {
                 nav_features: "មុខងារ",
@@ -484,7 +490,8 @@
                 ad_space_sm: "គាំទ្រពួកយើងដោយមើលអ្នកឧបត្ថម្ភ",
                 modal_donate_title: "ឧបត្ថម្ភអ្នកអភិវឌ្ឍន៍",
                 modal_donate_desc: "ស្កេនជាមួយ Mobile Banking App",
-                btn_close: "បិទ"
+                btn_close: "បិទ",
+                zip_pass: "🔑 លេខសម្ងាត់: 1122"
             }
         };
 
@@ -518,4 +525,3 @@
 
 </body>
 </html>
-
