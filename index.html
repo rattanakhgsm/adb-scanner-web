@@ -99,6 +99,7 @@
             
             <div class="mt-10 flex flex-col justify-center items-center gap-4">
                 <div class="flex flex-wrap justify-center gap-4">
+                    <!-- ปุ่มดาวน์โหลดที่มีการตั้งค่า href ผ่าน JS -->
                     <a id="mainDownloadBtn" href="#" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-400 hover:bg-green-500 md:py-4 md:text-lg md:px-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] transition duration-300 transform hover:scale-105">
                         <span data-i18n="btn_download">📥 ดาวน์โหลดเลย</span> <span id="btnVersionText"></span>
                     </a>
@@ -119,35 +120,52 @@
     </footer>
 
     <script>
-        // --- 1. ตั้งค่า GitHub ของคุณที่นี่ ---
+        // --- 1. ตั้งค่า GitHub ข้อมูลของคุณ ---
         const REPO_OWNER = 'rattanakhgsm'; 
         const REPO_NAME = 'adb-scanner-web';       
-        const DOWNLOAD_URL = 'https://github.com/rattanakhgsm/adb-scanner-web/releases/latest';
+        const FALLBACK_URL = 'https://github.com/rattanakhgsm/adb-scanner-web/releases/latest';
 
-        // --- 2. ฟังก์ชันดึงเวอร์ชันจาก version.txt อัตโนมัติ ---
+        // --- 2. ฟังก์ชันดึงข้อมูลเวอร์ชันและลิงก์ดาวน์โหลดตรง ---
         async function updatePageData() {
             const versionDisplay = document.getElementById('versionDisplay');
             const btnVersionText = document.getElementById('btnVersionText');
             const mainBtn = document.getElementById('mainDownloadBtn');
 
-            // ตั้งค่าลิงก์ดาวน์โหลดเบื้องต้น
-            mainBtn.href = DOWNLOAD_URL;
+            // ตั้งค่าเบื้องต้นให้ไปที่หน้า Release ก่อน (กรณีเรียก API ไม่สำเร็จ)
+            mainBtn.href = FALLBACK_URL;
 
             try {
-                // ดึงเลขเวอร์ชันจากไฟล์ version.txt โดยตรง (RAW)
-                const versionUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/version.txt`;
-                const response = await fetch(versionUrl);
-                if (response.ok) {
-                    const version = await response.text();
+                // ดึงข้อมูล Release ล่าสุดจาก GitHub API เพื่อหาไฟล์ดาวน์โหลดโดยตรง
+                const releaseApiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases/latest`;
+                const releaseResponse = await fetch(releaseApiUrl);
+                
+                if (releaseResponse.ok) {
+                    const releaseData = await releaseResponse.json();
+                    
+                    // ตรวจสอบว่ามีไฟล์ (Assets) ใน Release นั้นหรือไม่
+                    if (releaseData.assets && releaseData.assets.length > 0) {
+                        // ใช้ลิงก์ดาวน์โหลดของไฟล์แรกที่พบ (ปกติจะเป็นไฟล์ติดตั้งหลัก)
+                        const directUrl = releaseData.assets[0].browser_download_url;
+                        mainBtn.href = directUrl;
+                        console.log("Direct download link set:", directUrl);
+                    }
+                }
+
+                // ดึงเลขเวอร์ชันจากไฟล์ version.txt มาแสดงผลที่ Badge
+                const versionTxtUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/version.txt`;
+                const versionResponse = await fetch(versionTxtUrl);
+                if (versionResponse.ok) {
+                    const version = await versionResponse.text();
                     const cleanVersion = version.trim();
                     versionDisplay.innerText = `Latest Version: v${cleanVersion}`;
                     btnVersionText.innerText = `(v${cleanVersion})`;
                 } else {
                     versionDisplay.innerText = "Stable Version";
                 }
+
             } catch (error) {
                 console.error("Fetch error:", error);
-                versionDisplay.innerText = "v2.0";
+                versionDisplay.innerText = "Check update failed";
             }
         }
 
@@ -163,11 +181,12 @@
 
         function closeDonateModal() {
             document.getElementById('donateModal').classList.add('opacity-0');
+            document.getElementById('donateModalContent').classList.add('scale-100');
             document.getElementById('donateModalContent').classList.add('scale-95');
             setTimeout(() => document.getElementById('donateModal').classList.add('hidden'), 300);
         }
 
-        // Translation Data (Simplified)
+        // Translation Data
         const translations = {
             en: { hero_title1: "Android Management Tool", btn_download: "📥 Download Now", btn_donate: "☕ Donate", btn_close: "Close" },
             th: { hero_title1: "เครื่องมือจัดการ Android", btn_download: "📥 ดาวน์โหลดเลย", btn_donate: "☕ สนับสนุน", btn_close: "ปิดหน้าต่าง" },
