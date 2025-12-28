@@ -26,16 +26,6 @@
             cursor: pointer;
         }
         select:focus { outline: none; }
-        
-        .ad-placeholder {
-            background-image: repeating-linear-gradient(
-                45deg,
-                rgba(255, 255, 255, 0.03),
-                rgba(255, 255, 255, 0.03) 10px,
-                rgba(255, 255, 255, 0.05) 10px,
-                rgba(255, 255, 255, 0.05) 20px
-            );
-        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
@@ -48,10 +38,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-
             <h3 class="text-2xl font-bold text-white mb-2 neon-text" data-i18n="modal_donate_title">สนับสนุนผู้พัฒนา</h3>
-            <p class="text-sm text-gray-400 mb-6" data-i18n="modal_donate_desc">Scan with Mobile Banking App</p>
-            
+            <p class="text-sm text-gray-400 mb-6">Scan with Mobile Banking App</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-2 rounded-xl mb-3 shadow-lg w-48 h-auto hover:scale-105 transition duration-300">
@@ -60,19 +48,15 @@
                     <div class="text-white font-mono text-sm font-bold tracking-wide">CHHUON RATTANA</div>
                     <div class="text-cyan-400 text-xs mt-1 font-bold">ABA Bank</div>
                 </div>
-
                 <div class="flex flex-col items-center">
                     <div class="bg-white p-2 rounded-xl mb-3 shadow-lg w-48 h-auto hover:scale-105 transition duration-300">
                         <img src="K BANK.jpg" alt="K Bank QR Code" class="w-full h-full object-contain rounded-lg">
                     </div>
                     <div class="text-white font-mono text-sm font-bold tracking-wide">MR. RATTANA CHHUON</div>
-                    <div class="text-green-500 text-xs mt-1 font-bold">K Bank (Kasikorn)</div>
+                    <div class="text-green-500 text-xs mt-1 font-bold">K Bank</div>
                 </div>
             </div>
-
-            <button onclick="closeDonateModal()" class="w-full md:w-1/2 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition font-medium border border-gray-600 mx-auto block" data-i18n="btn_close">
-                ปิดหน้าต่าง
-            </button>
+            <button onclick="closeDonateModal()" class="w-full md:w-1/2 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-xl transition font-medium border border-gray-600 mx-auto block" data-i18n="btn_close">ปิดหน้าต่าง</button>
         </div>
     </div>
 
@@ -82,16 +66,15 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <span class="text-2xl mr-2">🛡️</span>
-                    <span class="font-bold text-xl tracking-wider">Guardian Andoid Virus Killer <span class="text-green-400">Pro</span></span>
+                    <span class="font-bold text-xl tracking-wider">Guardian Android Virus Killer <span class="text-green-400">Pro</span></span>
                 </div>
                 <div class="hidden md:flex items-center space-x-4">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#features" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_features">ฟีเจอร์</a>
                         <a href="#download" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_download">ดาวน์โหลด</a>
-                        <a href="#changelog" class="hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium transition" data-i18n="nav_update">อัปเดตล่าสุด</a>
                     </div>
                     <select id="langSelector" onchange="changeLanguage(this.value)" class="text-sm">
-                        <option value="en" selected>EN English</option>
+                        <option value="en">EN English</option>
                         <option value="km">🇰🇭 Khmer</option>
                         <option value="th">🇹🇭 ไทย</option>
                     </select>
@@ -103,447 +86,105 @@
     <!-- Hero Section -->
     <div class="relative pt-32 pb-12 sm:pt-40 sm:pb-16 lg:pb-24 overflow-hidden">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-            <!-- Version Badge (Dynamic) -->
             <div class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-6 text-sm rounded-full bg-slate-800 text-white border border-slate-600" role="alert">
                 <span class="text-xs bg-green-600 rounded-full text-white px-3 py-1 mr-3">New</span> 
-                <span id="versionDisplay" class="text-sm font-medium">Checking version...</span> 
+                <span id="versionDisplay" class="text-sm font-medium">Loading version...</span> 
             </div>
 
             <h1 class="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl neon-text mb-6">
                 <span data-i18n="hero_title1">เครื่องมือจัดการ Android</span> <br class="hidden sm:block" />
                 <span class="text-green-400" data-i18n="hero_title2">ระดับ Administrator</span>
             </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400" data-i18n="hero_desc">
-                สแกนไวรัส, ลบแอปขยะ, ตรวจสอบสุขภาพแบตเตอรี่ และจัดการไฟล์ผ่าน ADB แบบไร้สาย ครบจบในโปรแกรมเดียว
-            </p>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400" data-i18n="hero_desc">จัดการ Adware และระบบ Android ของคุณได้อย่างมีประสิทธิภาพ</p>
+            
             <div class="mt-10 flex flex-col justify-center items-center gap-4">
                 <div class="flex flex-wrap justify-center gap-4">
-                    <!-- ปุ่มดาวน์โหลดหลัก (เริ่มด้วย Link Google Drive ก่อน แล้ว Script จะเปลี่ยนเป็น GitHub ถ้าโหลดได้) -->
-                    <a id="mainDownloadBtn" href="https://drive.google.com/uc?export=download&id=1wIi_DtGvcOPuxObXTqfCgSzSF21VwkU7" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-400 hover:bg-green-500 md:py-4 md:text-lg md:px-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] transition duration-300 transform hover:scale-105">
-                        <span data-i18n="btn_download">📥 ดาวน์โหลดเลย</span> <span id="btnVersionText">(v2.0)</span>
+                    <a id="mainDownloadBtn" href="#" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-green-400 hover:bg-green-500 md:py-4 md:text-lg md:px-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] transition duration-300 transform hover:scale-105">
+                        <span data-i18n="btn_download">📥 ดาวน์โหลดเลย</span> <span id="btnVersionText"></span>
                     </a>
-                    <!-- ปุ่ม Donate -->
                     <button onclick="openDonateModal()" class="px-8 py-3 border border-yellow-400 text-base font-medium rounded-md text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 md:py-4 md:text-lg md:px-10 transition duration-300">
                         <span data-i18n="btn_donate">☕ สนับสนุน</span>
                     </button>
                 </div>
-                <!-- Password Info -->
-                <p class="text-sm text-green-300 mt-1 font-mono bg-green-900/30 px-3 py-1 rounded-full border border-green-500/30 inline-block" data-i18n="zip_pass">
-                    🔑 Password: 1122
-                </p>
-                <!-- Download Counter -->
-                <p class="text-sm text-gray-400 mt-1 animate-pulse">
-                    <span id="downloadCountText">Total Downloads:</span> 
-                    <span id="downloadCountValue" class="text-green-400 font-bold font-mono">Loading...</span>
-                </p>
-            </div>
-            
-            <!-- App Screenshot Showcase -->
-            <div class="mt-16 relative max-w-5xl mx-auto transform transition hover:scale-[1.01] duration-500">
-                <div class="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl blur opacity-30 animate-pulse"></div>
-                <div class="relative rounded-xl border border-gray-700 bg-gray-900/90 shadow-2xl overflow-hidden backdrop-blur-sm">
-                    <div class="bg-gray-800 px-4 py-3 flex items-center space-x-2 border-b border-gray-700">
-                        <div class="flex space-x-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <div class="flex-1 text-center text-xs text-gray-400 font-mono">Guardian Android Virus Killer Pro.exe</div>
-                    </div>
-                    <img src="app-preview.png" alt="Guardian App Interface" class="w-full h-auto object-cover opacity-95 hover:opacity-100 transition duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center bg-gray-900/50 -z-10">
-                        <p class="text-gray-500">Loading Preview...</p>
-                    </div>
-                </div>
-                <div class="absolute -bottom-20 left-0 right-0 h-20 bg-gradient-to-t from-transparent to-gray-900/20 blur-xl transform scale-y-[-1] opacity-50 pointer-events-none"></div>
-            </div>
-        </div>
-        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-    </div>
-
-    <!-- ADVERTISEMENT BANNER 1 -->
-    <div class="py-4 bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass ad-placeholder border border-gray-700 rounded-lg p-4 text-center relative overflow-hidden group hover:border-green-500 transition-colors duration-300 cursor-pointer">
-                <span class="absolute top-0 right-0 bg-gray-800 text-[10px] px-2 py-0.5 text-gray-500 rounded-bl uppercase tracking-wider">Advertisement</span>
-                <div class="flex flex-col items-center justify-center h-20 sm:h-24 text-gray-500 group-hover:text-green-400 transition">
-                    <span class="text-3xl mb-2">📢</span>
-                    <p class="font-mono text-sm sm:text-base" data-i18n="ad_space">YOUR AD HERE (Banner Space)</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Features Grid -->
-    <div id="features" class="py-12 bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h2 class="text-base text-green-400 font-semibold tracking-wide uppercase" data-i18n="sec_features">Features</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl" data-i18n="sec_features_sub">
-                    ทำอะไรได้บ้าง?
-                </p>
-            </div>
-
-            <div class="mt-10">
-                <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                    <!-- Feature 1 -->
-                    <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
-                        <div class="text-4xl mb-4">🕵️</div>
-                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_1_title">Adware & Fake App Detector</h3>
-                        <p class="mt-2 text-gray-400" data-i18n="feat_1_desc">สแกนหาแอปปลอม แอบแฝงโฆษณา หรือแอปอันตรายที่แอบติดตั้งในเครื่อง</p>
-                    </div>
-                    <!-- Feature 2 -->
-                    <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
-                        <div class="text-4xl mb-4">🏥</div>
-                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_2_title">Device Health Check</h3>
-                        <p class="mt-2 text-gray-400" data-i18n="feat_2_desc">ตรวจสอบสุขภาพแบตเตอรี่ ความร้อน และพื้นที่จัดเก็บข้อมูลแบบละเอียด</p>
-                    </div>
-                    <!-- Feature 3 -->
-                    <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
-                        <div class="text-4xl mb-4">🧹</div>
-                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_3_title">Smart Cleaner</h3>
-                        <p class="mt-2 text-gray-400" data-i18n="feat_3_desc">ลบไฟล์ขยะ ไฟล์ APK ที่ตกค้าง และ Log ไฟล์ เพื่อคืนพื้นที่ว่างให้มือถือ</p>
-                    </div>
-                    <!-- Feature 4 -->
-                    <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
-                        <div class="text-4xl mb-4">📡</div>
-                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_4_title">Wireless Debugging</h3>
-                        <p class="mt-2 text-gray-400" data-i18n="feat_4_desc">รองรับการเชื่อมต่อไร้สายสำหรับ Android 11+ พร้อมระบบจับคู่ (Pairing)</p>
-                    </div>
-                    <!-- Feature 5 -->
-                    <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
-                        <div class="text-4xl mb-4">🛡️</div>
-                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_5_title">Deep Analysis</h3>
-                        <p class="mt-2 text-gray-400" data-i18n="feat_5_desc">วิเคราะห์สิทธิ์การเข้าถึง (Permission) เชิงลึก ว่าแอปไหนแอบใช้กล้องหรือไมค์</p>
-                    </div>
-                    <!-- Feature 6 -->
-                    <div class="glass p-6 rounded-xl hover:bg-gray-700 transition duration-300">
-                        <div class="text-4xl mb-4">☁</div>
-                        <h3 class="text-lg leading-6 font-medium text-white" data-i18n="feat_6_title">Auto Update</h3>
-                        <p class="mt-2 text-gray-400" data-i18n="feat_6_desc">ระบบอัปเดตในตัว ไม่ต้องกลัวตกยุค กดเช็คเวอร์ชันใหม่ได้ทันที</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Download & Changelog -->
-    <div id="download" class="py-16 bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass rounded-2xl p-8 md:p-12 text-center border border-green-500/30 shadow-[0_0_50px_rgba(34,197,94,0.1)]">
-                <h2 class="text-3xl font-bold text-white mb-4" data-i18n="dl_title">พร้อมใช้งานแล้ววันนี้</h2>
-                <p class="text-gray-400 mb-8" data-i18n="dl_sub">รองรับ Windows 10 และ Windows 11 (ต้องการ .NET Framework 4.7.2 ขึ้นไป)</p>
-                
-                <!-- ปุ่มดาวน์โหลดรอง (ลิงก์จะถูกเปลี่ยนอัตโนมัติเช่นกัน) -->
-                <a id="subDownloadBtn" href="https://drive.google.com/uc?export=download&id=1wIi_DtGvcOPuxObXTqfCgSzSF21VwkU7" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-gray-900 bg-green-400 hover:bg-green-300 transition duration-300 shadow-lg">
-                    <span class="mr-2">💾</span> <span data-i18n="btn_download_zip">ดาวน์โหลดเวอร์ชันล่าสุด (ZIP)</span>
-                </a>
-
-                <div id="changelog" class="mt-12 text-left bg-black/30 rounded-lg p-6 font-mono text-sm text-gray-300 border border-gray-700">
-                    <h3 class="text-green-400 font-bold mb-2">Patch Notes v1.0.1</h3>
-                    <ul class="list-disc list-inside space-y-1">
-                        <li>🔥 <span data-i18n="log_1">เพิ่มฟีเจอร์ Smart Cleaner ลบไฟล์ขยะ</span></li>
-                        <li>🏥 <span data-i18n="log_2">เพิ่มหน้าจอ Health Check ดูสถานะแบตเตอรี่</span></li>
-                        <li>📡 <span data-i18n="log_3">ปรับปรุง UI การเชื่อมต่อไร้สายให้ใช้ง่ายขึ้น</span></li>
-                        <li>☁ <span data-i18n="log_4">เพิ่มปุ่มเช็คอัปเดตอัตโนมัติ</span></li>
-                        <li>🐞 <span data-i18n="log_5">แก้ไขบั๊กการแสดงผลภาษาไทย</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ADVERTISEMENT BANNER 2 -->
-    <div class="py-8 bg-gray-900 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-500 text-xs mb-2 uppercase tracking-wide">Sponsored Links</p>
-            <div class="glass ad-placeholder border border-gray-700 rounded p-4 inline-block w-full max-w-2xl cursor-pointer hover:border-green-500 transition">
-                 <p class="text-gray-400 font-mono text-sm" data-i18n="ad_space_sm">Support us by viewing our sponsors</p>
+                <p class="text-sm text-green-300 mt-1 font-mono bg-green-900/30 px-3 py-1 rounded-full border border-green-500/30 inline-block" data-i18n="zip_pass">🔑 Password: 1122</p>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 py-8 border-t border-gray-800">
+    <footer class="bg-gray-900 py-8 border-t border-gray-800 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-            <p>&copy; 2024-2025 Guardian Android Virus Killer Pro. Created with RATTANA ❤️ by NFIXKHGSM.</p>
-            <p class="mt-2" data-i18n="footer_disclaimer">Disclaimer: This tool is for educational and administrative purposes only.</p>
+            <p>&copy; 2024-2025 Guardian Android Virus Killer Pro.</p>
         </div>
     </footer>
 
-    <!-- Multilingual Script & Modal Logic -->
     <script>
-        // --- Download Counter & Auto Link Logic ---
-        const REPO_OWNER = 'rattanakhgsm';
-        const REPO_NAME = 'adb-scanner-web';
-        let currentDownloadCount = 0;
+        // --- 1. ตั้งค่า GitHub ของคุณที่นี่ ---
+        const REPO_OWNER = 'rattanakhgsm'; 
+        const REPO_NAME = 'adb-scanner-web';       
+        const DOWNLOAD_URL = 'https://github.com/rattanakhgsm/adb-scanner-web/releases/latest';
 
-        async function fetchDownloadCount() {
-            const countElement = document.getElementById('downloadCountValue');
-            const mainBtn = document.getElementById('mainDownloadBtn');
-            const subBtn = document.getElementById('subDownloadBtn');
+        // --- 2. ฟังก์ชันดึงเวอร์ชันจาก version.txt อัตโนมัติ ---
+        async function updatePageData() {
             const versionDisplay = document.getElementById('versionDisplay');
             const btnVersionText = document.getElementById('btnVersionText');
+            const mainBtn = document.getElementById('mainDownloadBtn');
 
-            // ดึงยอดคลิกส่วนตัวที่เคยบันทึกไว้ในเครื่อง (เพื่อให้เห็นเลขขยับทันทีสำหรับคนกด)
-            let localClicks = parseInt(localStorage.getItem('local_download_clicks') || '0');
+            // ตั้งค่าลิงก์ดาวน์โหลดเบื้องต้น
+            mainBtn.href = DOWNLOAD_URL;
 
             try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/releases`);
-                if (!response.ok) throw new Error('Network response was not ok');
-                
-                const releases = await response.json();
-                let githubDownloads = 0;
-                
-                // 1. Calculate Total GitHub Downloads
-                releases.forEach(release => {
-                    release.assets.forEach(asset => {
-                        githubDownloads += asset.download_count;
-                    });
-                });
-
-                // 2. Find latest download link & Version
-                if (releases.length > 0) {
-                    // Update Version Badge
-                    const latestTag = releases[0].tag_name; // e.g. v1.0.2
-                    versionDisplay.innerText = `Latest: ${latestTag}`;
-                    btnVersionText.innerText = `(${latestTag})`;
-                    
-                    // Update Link if Asset exists (สำคัญมาก: ต้องมีไฟล์ใน Release ถึงจะนับยอดได้)
-                    if (releases[0].assets.length > 0) {
-                        const latestUrl = releases[0].assets[0].browser_download_url;
-                        mainBtn.href = latestUrl;
-                        subBtn.href = latestUrl;
-                        // ถ้าลิงก์เป็น GitHub ให้เอา target blank ออกเพื่อให้โหลดในหน้าเดิมได้เนียนๆ
-                        mainBtn.removeAttribute('target');
-                        subBtn.removeAttribute('target');
-                    }
+                // ดึงเลขเวอร์ชันจากไฟล์ version.txt โดยตรง (RAW)
+                const versionUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/main/version.txt`;
+                const response = await fetch(versionUrl);
+                if (response.ok) {
+                    const version = await response.text();
+                    const cleanVersion = version.trim();
+                    versionDisplay.innerText = `Latest Version: v${cleanVersion}`;
+                    btnVersionText.innerText = `(v${cleanVersion})`;
                 } else {
-                     versionDisplay.innerText = "v1.0.1 (Stable)";
+                    versionDisplay.innerText = "Stable Version";
                 }
-
-                // Fake start for marketing if 0 (เอาออกได้ถ้าไม่ชอบ)
-                if (githubDownloads === 0 && localClicks === 0) githubDownloads = 125; 
-
-                // รวมยอดจริงจาก GitHub + ยอดที่เพิ่งกดไปในเครื่องนี้
-                currentDownloadCount = githubDownloads + localClicks;
-                
-                animateValue(countElement, 0, currentDownloadCount, 1500);
-
             } catch (error) {
-                console.error("Error fetching data:", error);
-                countElement.innerText = (125 + localClicks).toLocaleString(); // Fallback + local
-                versionDisplay.innerText = "v1.0.1";
+                console.error("Fetch error:", error);
+                versionDisplay.innerText = "v2.0";
             }
         }
 
-        function animateValue(obj, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                     obj.innerHTML = end.toLocaleString(); // Ensure final value is precise
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // Increment count visually on click AND Save to LocalStorage
-        function recordClick() {
-            const countElement = document.getElementById('downloadCountValue');
-            
-            // 1. เพิ่มยอดในตัวแปร
-            currentDownloadCount++;
-            countElement.innerHTML = currentDownloadCount.toLocaleString();
-
-            // 2. บันทึกลง LocalStorage (เพื่อให้รีเฟรชแล้วยอดที่กดไปไม่หาย)
-            let currentLocal = parseInt(localStorage.getItem('local_download_clicks') || '0');
-            localStorage.setItem('local_download_clicks', (currentLocal + 1).toString());
-        }
-
-        document.getElementById('mainDownloadBtn').addEventListener('click', recordClick);
-        document.getElementById('subDownloadBtn').addEventListener('click', recordClick);
-
-
         // Modal Logic
         function openDonateModal() {
-            const modal = document.getElementById('donateModal');
-            const content = document.getElementById('donateModalContent');
-            modal.classList.remove('hidden');
+            document.getElementById('donateModal').classList.remove('hidden');
             setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                content.classList.remove('scale-95');
-                content.classList.add('scale-100');
+                document.getElementById('donateModal').classList.remove('opacity-0');
+                document.getElementById('donateModalContent').classList.remove('scale-95');
+                document.getElementById('donateModalContent').classList.add('scale-100');
             }, 10);
         }
 
         function closeDonateModal() {
-            const modal = document.getElementById('donateModal');
-            const content = document.getElementById('donateModalContent');
-            modal.classList.add('opacity-0');
-            content.classList.remove('scale-100');
-            content.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+            document.getElementById('donateModal').classList.add('opacity-0');
+            document.getElementById('donateModalContent').classList.add('scale-95');
+            setTimeout(() => document.getElementById('donateModal').classList.add('hidden'), 300);
         }
 
-        document.getElementById('donateModal').addEventListener('click', function(e) {
-            if (e.target === this) closeDonateModal();
-        });
-
-        // Translation Data
+        // Translation Data (Simplified)
         const translations = {
-            en: {
-                nav_features: "Features",
-                nav_download: "Download",
-                nav_update: "Changelog",
-                hero_title1: "Android Management Tool",
-                hero_title2: "Administrator Level",
-                hero_desc: "Scan viruses, clean junk, check battery health, and manage files via Wireless ADB. All in one tool.",
-                btn_download: "📥 Download Now",
-                btn_source: "View Source Code",
-                btn_donate: "☕ Donate",
-                sec_features: "Features",
-                sec_features_sub: "What can it do?",
-                feat_1_title: "Adware & Fake App Detector",
-                feat_1_desc: "Scan for fake apps, hidden adware, or malicious apps secretly installed.",
-                feat_2_title: "Device Health Check",
-                feat_2_desc: "Monitor battery health, temperature, and detailed storage analysis.",
-                feat_3_title: "Smart Cleaner",
-                feat_3_desc: "Clean junk files, leftover APKs, and log files to free up space.",
-                feat_4_title: "Wireless Debugging",
-                feat_4_desc: "Support wireless connection for Android 11+ with Pairing system.",
-                feat_5_title: "Deep Analysis",
-                feat_5_desc: "Deep permission analysis. See which apps use camera or mic silently.",
-                feat_6_title: "Auto Update",
-                feat_6_desc: "Built-in updater. Never miss a version. Check updates instantly.",
-                dl_title: "Ready to use today",
-                dl_sub: "Supports Windows 10 & 11 (Requires .NET Framework 4.7.2+)",
-                btn_download_zip: "Download Latest Version (ZIP)",
-                log_1: "Added Smart Cleaner feature",
-                log_2: "Added Health Check dashboard",
-                log_3: "Improved Wireless Debugging UI",
-                log_4: "Added Auto-Update button",
-                log_5: "Fixed Thai language display bugs",
-                footer_disclaimer: "Disclaimer: This tool is for educational and administrative purposes only.",
-                ad_space: "YOUR AD HERE (Banner Space)",
-                ad_space_sm: "Support us by viewing our sponsors",
-                modal_donate_title: "Support Developer",
-                modal_donate_desc: "Scan with Mobile Banking App",
-                btn_close: "Close",
-                zip_pass: "🔑 Password: 1122"
-                },
-                th: {
-                nav_features: "ฟีเจอร์",
-                nav_download: "ดาวน์โหลด",
-                nav_update: "อัปเดตล่าสุด",
-                hero_title1: "เครื่องมือจัดการ Android",
-                hero_title2: "ระดับ Administrator",
-                hero_desc: "สแกนไวรัส, ลบแอปขยะ, ตรวจสอบสุขภาพแบตเตอรี่ และจัดการไฟล์ผ่าน ADB แบบไร้สาย ครบจบในโปรแกรมเดียว",
-                btn_download: "📥 ดาวน์โหลดเลย",
-                btn_source: "ดู Source Code",
-                btn_donate: "☕ สนับสนุน",
-                sec_features: "Features",
-                sec_features_sub: "ทำอะไรได้บ้าง?",
-                feat_1_title: "Adware & Fake App Detector",
-                feat_1_desc: "สแกนหาแอปปลอม แอบแฝงโฆษณา หรือแอปอันตรายที่แอบติดตั้งในเครื่อง",
-                feat_2_title: "Device Health Check",
-                feat_2_desc: "ตรวจสอบสุขภาพแบตเตอรี่ ความร้อน และพื้นที่จัดเก็บข้อมูลแบบละเอียด",
-                feat_3_title: "Smart Cleaner",
-                feat_3_desc: "ลบไฟล์ขยะ ไฟล์ APK ที่ตกค้าง และ Log ไฟล์ เพื่อคืนพื้นที่ว่างให้มือถือ",
-                feat_4_title: "Wireless Debugging",
-                feat_4_desc: "รองรับการเชื่อมต่อไร้สายสำหรับ Android 11+ พร้อมระบบจับคู่ (Pairing)",
-                feat_5_title: "Deep Analysis",
-                feat_5_desc: "วิเคราะห์สิทธิ์การเข้าถึง (Permission) เชิงลึก ว่าแอปไหนแอบใช้กล้องหรือไมค์",
-                feat_6_title: "Auto Update",
-                feat_6_desc: "ระบบอัปเดตในตัว ไม่ต้องกลัวตกยุค กดเช็คเวอร์ชันใหม่ได้ทันที",
-                dl_title: "พร้อมใช้งานแล้ววันนี้",
-                dl_sub: "รองรับ Windows 10 และ Windows 11 (ต้องการ .NET Framework 4.7.2 ขึ้นไป)",
-                btn_download_zip: "ดาวน์โหลดเวอร์ชันล่าสุด (ZIP)",
-                log_1: "เพิ่มฟีเจอร์ Smart Cleaner ลบไฟล์ขยะ",
-                log_2: "เพิ่มหน้าจอ Health Check ดูสถานะแบตเตอรี่",
-                log_3: "ปรับปรุง UI การเชื่อมต่อไร้สายให้ใช้ง่ายขึ้น",
-                log_4: "เพิ่มปุ่มเช็คอัปเดตอัตโนมัติ",
-                log_5: "แก้ไขบั๊กการแสดงผลภาษาไทย",
-                footer_disclaimer: "Disclaimer: เครื่องมือนี้สำหรับการศึกษาและการจัดการระบบเท่านั้น",
-                ad_space: "พื้นที่โฆษณา (ติดต่อเรา)",
-                ad_space_sm: "สนับสนุนเราโดยการเยี่ยมชมผู้สนับสนุน",
-                modal_donate_title: "สนับสนุนผู้พัฒนา",
-                modal_donate_desc: "สแกนด้วยแอปธนาคาร",
-                btn_close: "ปิดหน้าต่าง",
-                zip_pass: "🔑 รหัสผ่าน: 1122"
-            },
-            km: {
-                nav_features: "មុខងារ",
-                nav_download: "ទាញយក",
-                nav_update: "បច្ចុប្បន្នភាព",
-                hero_title1: "ឧបករណ៍គ្រប់គ្រង Android",
-                hero_title2: "កម្រិតអ្នកគ្រប់គ្រង",
-                hero_desc: "ស្កេនមេរោគ, លុបឯកសារឥតប្រយោជន៍, ពិនិត្យសុខភាពថ្ម និងគ្រប់គ្រងឯកសារតាម ADB Wireless ។",
-                btn_download: "📥 ទាញយកឥឡូវនេះ",
-                btn_source: "មើលកូដ",
-                btn_donate: "☕ ឧបត្ថម្ភ",
-                sec_features: "Features",
-                sec_features_sub: "តើវាអាចធ្វើអ្វីបានខ្លះ?",
-                feat_1_title: "Adware & Fake App Detector",
-                feat_1_desc: "ស្កេនរកកម្មវិធីក្លែងក្លាយ ឬកម្មវិធីមេរោគដែលលាក់ខ្លួន។",
-                feat_2_title: "Device Health Check",
-                feat_2_desc: "ពិនិត្យសុខភាពថ្ម សីតុណ្ហភាព និងការផ្ទុកទិន្នន័យ។",
-                feat_3_title: "Smart Cleaner",
-                feat_3_desc: "លុបឯកសារឥតប្រយោជន៍ APK និង Log ដើម្បីបង្កើនទំហំផ្ទុក។",
-                feat_4_title: "Wireless Debugging",
-                feat_4_desc: "គាំទ្រការតភ្ជាប់ឥតខ្សែសម្រាប់ Android 11+ ជាមួយប្រព័ន្ធ Pairing ។",
-                feat_5_title: "Deep Analysis",
-                feat_5_desc: "វិភាគការអនុញ្ញាត (Permission) ។ មើលកម្មវិធីណាប្រើកាមេរ៉ា ឬមីក្រូហ្វូន។",
-                feat_6_title: "Auto Update",
-                feat_6_desc: "ប្រព័ន្ធអាប់ដេតស្វ័យប្រវត្តិ។ មិនបារម្ភរឿងហួសសម័យ។",
-                dl_title: "រួចរាល់សម្រាប់ការប្រើប្រាស់",
-                dl_sub: "គាំទ្រ Windows 10 និង 11 (.NET Framework 4.7.2+)",
-                btn_download_zip: "ទាញយកកំណែចុងក្រោយ (ZIP)",
-                log_1: "បន្ថែមមុខងារ Smart Cleaner",
-                log_2: "បន្ថែមផ្ទាំង Health Check",
-                log_3: "កែលម្អ UI ការតភ្ជាប់ឥតខ្សែ",
-                log_4: "បន្ថែមប៊ូតុងអាប់ដេតស្វ័យប្រវត្តិ",
-                log_5: "ជួសជុលបញ្ហាភាសាថៃ",
-                footer_disclaimer: "Disclaimer: ឧបករណ៍នេះសម្រាប់គោលបំណងអប់រំ និងគ្រប់គ្រងប៉ុណ្ណោះ។",
-                ad_space: "ដាក់ពាណិជ្ជកម្មនៅទីនេះ",
-                ad_space_sm: "គាំទ្រពួកយើងដោយមើលអ្នកឧបត្ថម្ភ",
-                modal_donate_title: "ឧបត្ថម្ភអ្នកអភិវឌ្ឍន៍",
-                modal_donate_desc: "ស្កេនជាមួយ Mobile Banking App",
-                btn_close: "បិទ",
-                zip_pass: "🔑 លេខសម្ងាត់: 1122"
-            }
+            en: { hero_title1: "Android Management Tool", btn_download: "📥 Download Now", btn_donate: "☕ Donate", btn_close: "Close" },
+            th: { hero_title1: "เครื่องมือจัดการ Android", btn_download: "📥 ดาวน์โหลดเลย", btn_donate: "☕ สนับสนุน", btn_close: "ปิดหน้าต่าง" },
+            km: { hero_title1: "ឧបករណ៍គ្រប់គ្រង Android", btn_download: "📥 ទាញយកឥឡូវនេះ", btn_donate: "☕ ឧបត្ថម្ភ", btn_close: "បិទ" }
         };
 
         function changeLanguage(lang) {
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
             });
         }
 
-        // --- ตั้งค่าภาษาเริ่มต้นเป็นภาษาอังกฤษ ---
         document.addEventListener('DOMContentLoaded', () => {
-            const defaultLang = 'en'; 
-            
-            const selector = document.getElementById('langSelector');
-            if(selector) {
-                selector.value = defaultLang;
-            }
-            
-            changeLanguage(defaultLang);
-            fetchDownloadCount();
+            changeLanguage('en');
+            updatePageData();
         });
     </script>
-
 </body>
 </html>
-
